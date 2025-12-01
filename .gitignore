@@ -44,3 +44,4 @@ Thumbs.db
 # solution data
 *.data*.txt
 !*.data.sample.txt
+
