@@ -1,6 +1,4 @@
-import { runSolution } from '../utils.ts';
-
-const isEven = (num: number) => num % 2 === 0;
+import { isEven, runSolution } from '../utils.ts';
 
 /** provide your solution as the return of this function */
 export async function day2a(data: string[]) {
@@ -10,9 +8,7 @@ export async function day2a(data: string[]) {
 
   ids.forEach((idPair) => {
     const [id1, id2] = idPair.split('-').map((val) => parseInt(val, 10));
-    if (isNaN(id1) || isNaN(id2)) {
-      return;
-    }
+
     for (let i = id1; i <= id2; i++) {
       const numberLength = i.toString().length;
       if (!isEven(numberLength)) {

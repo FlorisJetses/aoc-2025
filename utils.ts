@@ -44,3 +44,6 @@ type Y = number;
 export const returnKey = (x: number, y: number): `${X}-${Y}` => `${x}-${y}`;
 export const getCoordinates = (key: string) =>
   key.split('-').map((num) => parseInt(num)) as [number, number];
+
+export const isEven = (num: number) => num % 2 === 0;
+export const isOdd = (num: number) => !isEven(num);

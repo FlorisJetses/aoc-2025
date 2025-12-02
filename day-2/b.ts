@@ -16,9 +16,7 @@ export async function day2a(data: string[]) {
 
   ids.forEach((idPair) => {
     const [id1, id2] = idPair.split('-').map((val) => parseInt(val, 10));
-    if (isNaN(id1) || isNaN(id2)) {
-      return;
-    }
+
     for (let i = id1; i <= id2; i++) {
       const numberString = i.toString();
       const numberLength = numberString.length;
