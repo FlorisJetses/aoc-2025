@@ -1,7 +1,5 @@
 import { runSolution } from '../utils.ts';
 
-const isEven = (num: number) => num % 2 === 0;
-
 const chunkArray = <T>(array: T[], chunkSize: number) => {
   const numberOfChunks = Math.ceil(array.length / chunkSize);
 
@@ -29,28 +27,17 @@ export async function day2a(data: string[]) {
         continue;
       }
 
-      if (isEven(numberLength)) {
-        const firstHalf = numberString.slice(0, numberLength / 2);
-        const secondHalf = numberString.slice(numberLength / 2);
-        if (firstHalf === secondHalf) {
-          password += i;
-          console.log(i, idPair);
-          continue;
-        }
-      }
-
       const isAllSameDigit = numberString
         .split('')
         .every((char) => char === numberString[0]);
 
       if (isAllSameDigit) {
         password += i;
-        console.log(i, idPair);
         continue;
       }
 
       const splitNumber = numberString.split('');
-      for (let p = 2; p < numberLength; p++) {
+      for (let p = 2; p <= numberLength / 2; p++) {
         const chunks = chunkArray(splitNumber, p);
 
         const isEqual = chunks
@@ -58,13 +45,11 @@ export async function day2a(data: string[]) {
           .every((val) => {
             return val === chunks[0].join('');
           });
+
         if (isEqual) {
-          // console.log(chunks, p);
           password += i;
-          console.log(i, idPair);
           break;
         }
-        // console.log(chunks.map((chunk) => chunk.join('')));
       }
     }
   });
