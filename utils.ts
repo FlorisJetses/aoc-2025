@@ -18,6 +18,9 @@ export async function readData() {
     .map((x, i) => (i === 0 ? +x.split('-')[1] : x)) as [number, 'a' | 'b'];
   const fileName = createFileName(day, part, dataSet);
   const data = (await readFile(fileName)).toString().split('\n');
+  if (data.at(-1) === '') {
+    data.pop();
+  }
   return data;
 }
 
